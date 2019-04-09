@@ -1,0 +1,7 @@
+-- 查询至少有一门课与学号为"01"的同学所学相同的同学的信息 
+
+select * from student where  s_id in (
+select DISTINCT a.s_id from score a 
+where a.c_id in (select s.c_id from score s where s.s_id = '01')) 
+
+-- 拆分为三段 01 学生学的课程id 然后查询学过该课程的学生的id，然后根据学生id查询学生的姓名
